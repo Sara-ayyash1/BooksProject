@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Favorite Books - Details</title>
+</head>
+<body>
+    <header class="main-header">
+        <div class="header-container">
+            <p>Welcome, <strong>{{user.first_name}}</strong>!</p>
+            <div class="user-nav">
+                <a href="/books" class="btn-back">Go to Books</a> | 
+                <a href="/logout" class="btn-logout">Logout</a>
+            </div>
+        </div>
+    </header> 
+
+    <div class="container detail-container">
+        {% if messages %}
+            <div class="alert-messages">
+                {% for msg in messages %}
+                    <p class="msg {{msg.tags}}">{{msg}}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        <section class="book-info">
+            {% if book.uploaded_by.id == user.id %}
+                <form action="/books/{{book.id}}/update" method="post" class="edit-form">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <input type="text" name="title" value="{{book.title}}" class="form-control-title">
+                    </div>
+                    <p>Added by: {{book.uploaded_by.first_name}} {{book.uploaded_by.last_name}}</p>
+                    <p>Added on: {{book.created_at|date:"M d, Y @ g:i a"}}</p>
+                    <p>Last updated on: {{book.updated_at|date:"M d, Y @ g:i a"}}</p>
+                    
+                    <div class="form-group">
+                        <label for="description">Description:</label>
+                        <textarea name="description" id="description" rows="4">{{book.description}}</textarea>
+                    </div>
+                    
+                    <div class="action-buttons">
+                        <button type="submit" class="btn btn-update">Update</button>
+                        <a href="/books/{{book.id}}/delete" class="btn btn-delete" onclick="return confirm('Are you sure?')">Delete</a>
+                    </div>
+                </form>
+            {% else %}
+                <h2>{{book.title}}</h2>
+                <p>Added by: {{book.uploaded_by.first_name}} {{book.uploaded_by.last_name}}</p>
+                <p>Added on: {{book.created_at|date:"M d, Y @ g:i a"}}</p>
+                <p>Last updated on: {{book.updated_at|date:"M d, Y @ g:i a"}}</p>
+                <p class="book-desc"><strong>Description:</strong> {{book.description}}</p>
+            {% endif %}
+        </section>
+
+        <section class="book-lovers">
+            <h2>Users Who Like This Book</h2>
+            <ul class="lovers-list">
+                {% for u in book.users_who_like.all %}
+                    <li>
+                        {{u.first_name}} {{u.last_name}}
+                        {% if u.id == user.id %}
+                            <a href="/books/{{book.id}}/unfavorite" class="link-unfavorite">Un-Favorite</a>
+                        {% endif %}
+                    </li>
+                {% empty %}
+                    <li>No users like this book yet.</li>
+                {% endfor %}
+            </ul>
+
+            {% if user not in book.users_who_like.all %}
+                <div class="add-to-fav-box">
+                    <a href="/books/{{book.id}}/favorite" class="btn btn-primary">Add to Favorites</a>
+                </div>
+            {% endif %}
+        </section>
+    </div>
+</body>
+</html>

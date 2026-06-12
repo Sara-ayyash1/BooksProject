@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/auth_style.css' %}">
+    <title>Login & Registration</title>
+</head>
+<body>
+    <div class="auth-wrapper">
+        <header class="auth-header">
+            <h1>CodingDojo <span>Wall</span></h1>
+            <p>Connect, share, and engage with your community.</p>
+        </header>
+
+        {% if messages %}
+            <div class="alert-container">
+                {% for msg in messages %}
+                    <p class="alert-msg {{msg.tags}}">{{msg}}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        <main class="auth-container">
+            <section class="auth-card">
+                <h2>Register</h2>
+                <form action="/register/" method="post">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="reg_first_name">First Name</label>
+                        <input type="text" name="first_name" id="reg_first_name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="reg_last_name">Last Name</label>
+                        <input type="text" name="last_name" id="reg_last_name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="reg_email">Email Address</label>
+                        <input type="email" name="email" id="reg_email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="reg_password">Password</label>
+                        <input type="password" name="password" id="reg_password" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirm_pw">Confirm Password</label>
+                        <input type="password" name="confirm_pw" id="confirm_pw" required>
+                    </div>
+                    <button type="submit" class="btn btn-register">Create Account</button>
+                </form>
+            </section>
+
+            <section class="auth-card login-card">
+                <h2>Login</h2>
+                <form action="/login/" method="post">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="log_email">Email Address</label>
+                        <input type="email" name="email" id="log_email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="log_password">Password</label>
+                        <input type="password" name="password" id="log_password" required>
+                    </div>
+                    <button type="submit" class="btn btn-login">Sign In</button>
+                </form>
+            </section>
+        </main>
+    </div>
+</body>
+</html>

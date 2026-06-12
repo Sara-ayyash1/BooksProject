@@ -1,0 +1,367 @@
+/* إعدادات عامة وتصفير الهوامش */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f0f2f5;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 750px;
+    margin: 30px auto;
+    padding: 0 15px;
+}
+
+/* الهيدر العلوي */
+.main-header {
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header-container {
+    max-width: 80%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 15px;
+}
+
+.main-header h1 {
+    font-size: 1.4rem;
+    color: #007bff;
+}
+
+.main-header h1 span {
+    color: #333;
+    font-weight: 400;
+}
+
+.user-nav {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 0.95rem;
+}
+
+.btn-logout {
+    color: #dc3545;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 4px 8px;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+.btn-logout:hover {
+    background-color: #fde8e8;
+}
+
+/* الكروت (البوستات وصندوق الكتابة) */
+.post-creation-card, .message-card {
+    background: #ffffff;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 25px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.post-creation-card h2 {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    color: #444;
+}
+
+label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+/* صناديق الكتابة */
+textarea {
+    width: 100%;
+    min-height: 75px;
+    border: 1px solid #cccccc;
+    border-radius: 6px;
+    padding: 10px;
+    resize: vertical;
+    font-size: 0.95rem;
+    outline: none;
+    transition: border-color 0.2s;
+    background-color:  #f9fafb;
+}
+
+textarea:focus {
+    border-color: #007bff;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+}
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #606770;
+    margin-bottom: 6px;
+}
+
+/* تصميم حقول الإدخال الاحترافي */
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccd0d5;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    outline: none;
+    transition: all 0.2s;
+    background-color: #f9fafb;
+}
+
+.form-group input:focus {
+    border-color: #007bff;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.15);
+}
+/* الأزرار */
+.btn {
+    border: none;
+    padding: 8px 16px;
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.btn-sm {
+    padding: 6px 12px;
+    font-size: 0.85rem;
+}
+
+/* تفاصيل كارت البوست على الـ Wall */
+.message-header {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.message-header .author {
+    font-weight: bold;
+    color: #111;
+    font-size: 1.05rem;
+}
+
+.message-header .date {
+    font-size: 0.8rem;
+    color: #777;
+}
+
+.message-body {
+    font-size: 1.05rem;
+    margin-bottom: 18px;
+    color: #222;
+    word-break: break-word;
+}
+
+/* قسم التعليقات (داخل البوست) */
+.book-section {
+    background-color: #f8f9fa;
+    border-left: 3px solid #007bff;
+    padding: 12px 15px;
+    border-radius: 0 6px 6px 0;
+    margin-bottom: 15px;
+}
+
+.single-book {
+    border-bottom: 1px solid #b1b4b8;
+    padding: 8px 0;
+}
+
+
+
+.no-books {
+    font-size: 0.85rem;
+    color: #888;
+    text-align: center;
+    padding: 5px 0;
+}
+
+/* فورم التعليق */
+
+.alert-messages .msg {
+    padding: 10px 15px;
+    background-color: #f8d7da;
+    color: #721c24;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    font-size: 0.9rem;
+}
+.btn-delete {
+    background: none;
+    border: none;
+    color: #dc3545;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-left: auto; /* بيدفع الزر لأقصى اليمين في الكارت */
+    padding: 2px 6px;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+.btn-delete:hover {
+    background-color: #fde8e8;
+}
+
+/* --- تنسيقات صفحة تفاصيل الكتاب (Book Details Page) --- */
+
+/* الحاوية الرئيسية لصفحة التفاصيل لتقسيمها إلى عمودين أو قسمين متناسقين */
+.detail-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+    margin-top: 30px;
+}
+
+/* القسم الخاص ببيانات الكتاب أو فورم التعديل */
+.book-info {
+    flex: 1;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+}
+
+/* كلاس مخصص لمدخلات عنوان الكتاب داخل فورم التعديل ليظهر بشكل بارز وكبير */
+.form-control-title {
+    font-size: 24px;
+    font-weight: bold;
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* أزرار التحكم (تحديث / حذف) */
+.action-buttons {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.btn-update {
+    background-color: #28a745; /* لون أخضر للتحديث */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-delete {
+    background-color: #dc3545; /* لون أحمر للحذف */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+}
+
+/* قسم المستخدمين المعجبين بالكتاب */
+.book-lovers {
+    flex: 1;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #eee;
+}
+
+.lovers-list {
+    list-style-type: square;
+    padding-left: 20px;
+    margin-bottom: 20px;
+}
+
+.lovers-list li {
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+/* رابط إلغاء الإعجاب الذي يظهر بجانب الاسم */
+.link-unfavorite {
+    color: #dc3545;
+    font-size: 14px;
+    margin-left: 10px;
+    text-decoration: underline;
+}
+
+.link-unfavorite:hover {
+    color: #bd2130;
+}
+
+/* صندوق يحتوي على زر إضافة إلى المفضلة في الأسفل */
+.add-to-fav-box {
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px dashed #ccc;
+}
+
+
+/* --- تنسيقات إضافية مكملة للـ Header والصفحة الرئيسية --- */
+
+/* رابط العودة بجانب تسجيل الخروج */
+.btn-back {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.btn-back:hover {
+    text-decoration: underline;
+}
+
+/* زر إضافة إلى المفضلة السريع في الصفحة الرئيسية */
+.btn-fav {
+    display: inline-block;
+    margin-top: 5px;
+    color: #007bff;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.btn-fav:hover {
+    text-decoration: underline;
+}
