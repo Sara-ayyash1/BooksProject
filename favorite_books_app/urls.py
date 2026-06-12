@@ -8,4 +8,5 @@ urlpatterns = [
     path('<int:book_id>/favorite' , views.favorite_book),
     path('<int:book_id>/unfavorite' , views.unfavorite_book),
     path('<int:book_id>/delete' , views.delete_book),
+    path('<int:book_id>/update' , views.update_book),
 ]
